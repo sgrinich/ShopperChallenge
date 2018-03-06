@@ -1,3 +1,65 @@
-<p>
-  application works!
-</p>
+<body class="bg-form-neutral">
+  <div class="row">
+    <div class="container col-lg-6 centerbox">
+      <div class="container bg-form-lightest center-container">
+        <h1 class=" text-center text-uppercase">Apply Now</h1>
+        <form (ngSubmit)="onSubmit()" #applicationForm="ngForm">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input required type="text" class="form-control" id="firstName" (blur)="onBlur(applicationForm.form.valid)" [(ngModel)]="model.firstName" name="firstName"
+              #firstName="ngModel">
+
+            <div *ngIf="firstName.invalid">
+              <div *ngIf="firstName.errors.required && firstName.touched" class="alert alert-danger">
+                First name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input required type="text" class="form-control" id="lastName" (blur)="onBlur(applicationForm.form.valid)" [(ngModel)]="model.lastName" name="lastName"
+              #lastName="ngModel">
+
+            <div *ngIf="lastName.invalid">
+              <div *ngIf="lastName.errors.required && lastName.touched" class="alert alert-danger">
+                Last name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input required type="tel" class="form-control" id="phone" (blur)="onBlur(applicationForm.form.valid)" [(ngModel)]="model.phone" name="phone" #phone="ngModel"
+              pattern="\d{3}[\-]\d{3}[\-]\d{4}">
+
+            <div *ngIf="phone.invalid">
+              <div *ngIf="phone.errors.required && phone.touched" class="alert alert-danger">
+                Phone is required.
+              </div>
+              <div *ngIf="!phone.errors.required && phone.touched" class="alert alert-danger">
+                Phone is invalid. (Required Format: 555-555-5555)
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input required type="email" class="form-control" id="email" (blur)="onBlur(applicationForm.form.valid)" [(ngModel)]="model.email" name="email" #email="ngModel"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+            <div *ngIf="email.invalid">
+              <div *ngIf="email.errors.required && email.touched" class="alert alert-danger">
+                Email is required.
+              </div>
+              <div *ngIf="!email.errors.required && email.touched" class="alert alert-danger">
+                Email is invalid.
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!applicationForm.form.valid">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

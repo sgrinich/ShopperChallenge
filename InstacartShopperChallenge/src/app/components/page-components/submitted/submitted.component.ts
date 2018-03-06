@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-submitted',
-  templateUrl: './submitted.component.html',
-  styleUrls: ['./submitted.component.css']
+  selector: 'app-submitted-component',
+  templateUrl: './submitted.component.html'
 })
-export class SubmittedComponent implements OnInit {
 
-  constructor() { }
+export class SubmittedComponent {
+  constructor(
+    private router: Router
+  ) { }
 
-  ngOnInit() {
+  public onHomeSelection() {
+    this.router.navigateByUrl('');
   }
-
 }

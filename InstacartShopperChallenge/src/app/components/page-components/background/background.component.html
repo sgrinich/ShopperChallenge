@@ -1,3 +1,17 @@
-<p>
-  background works!
-</p>
+<body class="bg-form-neutral">
+  <div class="row">
+      <div class="container col-lg-6 centerbox">
+          <div class="container bg-form-lightest center-container">
+              <h2 class="text-center">A background check is necessary before submission. Please confirm this is OK. </h2>
+              <div class="text-center">
+                  <button (click)="onSelection(true)" class="btn btn-primary">Yes</button>
+                  <button (click)="onSelection(false)" class="btn btn-primary">No</button>
+              </div>
+              <hr>
+              <div class="text-center">
+                  <button (click)="onViewApplication()" class="btn btn-primary">View My Application</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</body>

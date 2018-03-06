@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Application } from '../../../interface/application.interface';
+import { SessionService } from '../../../services/session.service';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-main-component',
+  templateUrl: './main.component.html'
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private sessionService: SessionService
+  ) { }
 
-  ngOnInit() {
+  public onApplyNow() {
+    const application = this.sessionService.getApplication();
+    if (application && application.submitted) {
+      if (application.submitted && !application.backgroundCheckAccepted) {
+        this.router.navigateByUrl('background-check');
+      }
+    } else {
+      this.router.navigateByUrl('apply-now');
+    }
   }
-
 }
+
