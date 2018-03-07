@@ -20,4 +20,4 @@ Please not that I did not write unit tests or end to end tests for this project.
 
 ### PART 2: 
 
-You will need to add the sqlite file in the same directory as challenge.py for it to function. 
+You will need to add the sqlite file in the same directory as challenge.py for it to function. It was too large to add to github.
